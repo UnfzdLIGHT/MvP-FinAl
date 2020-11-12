@@ -6,6 +6,12 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     info.changeScoreBy(-1)
     mySprite.say("" + info.score())
 })
+function Star_amount_Var (num: number) {
+	
+}
+sprites.onCreated(SpriteKind.Projectile, function (sprite) {
+    console.logValue("x", projectile)
+})
 let projectile: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
@@ -122,8 +128,8 @@ scene.setBackgroundImage(img`
     fffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffaaaaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -149,66 +155,69 @@ mySprite = sprites.create(img`
     . . . . . . . 4 . . . . . . . . 
     `, SpriteKind.Player)
 mySprite.setPosition(79, 112)
+game.splash("Count e'm!")
 music.playMelody("D F D D G D E C ", 130)
-music.playMelody("C F D E C D D E ", 120)
-for (let index = 0; index <= randint(10, 20); index++) {
+for (let index2 = 0; index2 <= randint(10, 20); index2++) {
     projectile = sprites.createProjectileFromSide(img`
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . 1 a 1 . . . . . . . 
+        . . . . . 1 a c a 1 . . . . . . 
+        . . . . . 1 a c a 1 . . . . . . 
+        . . . 1 1 a c c c a 1 1 . . . . 
+        . . 1 a a c c c c c a a 1 . . . 
+        1 1 a c c c c 2 c c c c a 1 1 . 
+        . . 1 a a c c c c c a a 1 . . . 
+        . . . 1 1 a c c c a 1 1 . . . . 
+        . . . . . 1 a c a 1 . . . . . . 
+        . . . . . 1 a c a 1 . . . . . . 
+        . . . . . . 1 a 1 . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . a . . . . . . . . 
-        . . . . . . a c a . . . . . . . 
-        . . . . . . a c a . . . . . . . 
-        . . . . . a c c c a . . . . . . 
-        . . . a a c c c c c a a . . . . 
-        . . a c c c c 2 c c c c a . . . 
-        . . . a a c c c c c a a . . . . 
-        . . . . . a c c c a . . . . . . 
-        . . . . . . a c a . . . . . . . 
-        . . . . . . a c a . . . . . . . 
-        . . . . . . . a . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, randint(10, 30), randint(10, 30))
+        `, randint(-50, 50), randint(-50, 50))
     pause(2000)
     projectile = sprites.createProjectileFromSide(img`
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . 1 8 1 . . . . . . . 
+        . . . . . 1 8 6 8 1 . . . . . . 
+        . . . . . 1 8 6 8 1 . . . . . . 
+        . . . 1 1 8 6 6 6 8 1 1 . . . . 
+        . . 1 8 8 6 6 9 6 6 8 8 1 . . . 
+        1 1 8 6 6 6 9 9 9 6 6 6 8 1 1 . 
+        . . 1 8 8 6 6 9 6 6 8 8 1 . . . 
+        . . . 1 1 8 6 6 6 8 1 1 . . . . 
+        . . . . . 1 8 6 8 1 . . . . . . 
+        . . . . . 1 8 6 8 1 . . . . . . 
+        . . . . . . 1 8 1 . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 8 . . . . . . . . 
-        . . . . . . 8 6 8 . . . . . . . 
-        . . . . . . 8 6 8 . . . . . . . 
-        . . . . . 8 6 6 6 8 . . . . . . 
-        . . . 8 8 6 6 6 6 6 8 8 . . . . 
-        . . 8 6 6 6 6 9 6 6 6 6 8 . . . 
-        . . . 8 8 6 6 6 6 6 8 8 . . . . 
-        . . . . . 8 6 6 6 8 . . . . . . 
-        . . . . . . 8 6 8 . . . . . . . 
-        . . . . . . 8 6 8 . . . . . . . 
-        . . . . . . . 8 . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, randint(20, 40), randint(20, 40))
+        `, randint(-80, 80), randint(20, 40))
     pause(2000)
     projectile = sprites.createProjectileFromSide(img`
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . 1 2 1 . . . . . . . 
+        . . . . . 1 2 4 2 1 . . . . . . 
+        . . . . . 1 2 4 2 1 . . . . . . 
+        . . . 1 1 2 4 4 4 2 1 1 . . . . 
+        . . 1 2 2 4 4 5 4 4 2 2 1 . . . 
+        1 1 2 4 4 4 5 5 5 4 4 4 2 1 1 . 
+        . . 1 2 2 4 4 5 4 4 2 2 1 . . . 
+        . . . 1 1 2 4 4 4 2 1 1 . . . . 
+        . . . . . 1 2 4 2 1 . . . . . . 
+        . . . . . 1 2 4 2 1 . . . . . . 
+        . . . . . . 1 2 1 . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
+        . . . . . . . 1 . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . 2 4 2 . . . . . . . 
-        . . . . . . 2 4 2 . . . . . . . 
-        . . . . . 2 4 4 4 2 . . . . . . 
-        . . . 2 2 4 4 4 4 4 2 2 . . . . 
-        . . 2 4 4 4 4 5 4 4 4 4 2 . . . 
-        . . . 2 2 4 4 4 4 4 2 2 . . . . 
-        . . . . . 2 4 4 4 2 . . . . . . 
-        . . . . . . 2 4 2 . . . . . . . 
-        . . . . . . 2 4 2 . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, randint(30, 50), randint(30, 50))
+        `, randint(-100, 100), randint(-100, 100))
 }
-forever(function () {
-	
-})
+music.playMelody("C F D E C D D E ", 120)
+if (info.score() == 0) {
+    game.over(true, effects.starField)
+} else {
+    game.over(false, effects.clouds)
+}
